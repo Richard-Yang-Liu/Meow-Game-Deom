@@ -1,31 +1,53 @@
 # Meow Games Collection
 
-Welcome to the **Meow Games Collection** – a growing series of fun and accessible web-based mini-games, built for learning, creativity, and sharing!  
+Welcome to the **Meow Games Collection** – a growing series of fun and accessible web-based mini-games, built for learning, creativity, and sharing!
+
 This project is a personal journey of game development, where I continuously design, build, and refine casual games such as **Tetris**, **Meow Jump**, and more.
 
-**If you want to play, [Click here!](https://richard-yang-liu.github.io/Meow-Game-Deom/homepage.html)**
+### [Play Online Now](https://richard-yang-liu.github.io/Meow-Game-Deom/homepage.html)
 
 ---
-## 🎬 Live Demo
 
-**Homepage Preview:**  
-<video src="images/index.mp4" width="350" autoplay loop muted playsinline></video>
+## Live Demo
 
-**Tetris Gameplay:**  
-<video src="images/tetris.mp4" width="350" autoplay loop muted playsinline></video>
+Experience the games instantly through these animated previews:
 
-**Meow Jump Gameplay:**  
-<video src="images/meowjump.mp4" width="350" autoplay loop muted playsinline></video>
+### Homepage
 
-**Pause & Reset Demo:**  
-<video src="images/setting.mp4" width="350" autoplay loop muted playsinline></video>
+See the main menu and navigation:
+
+![Homepage Demo](images/index.gif)
 
 ---
+
+### Tetris Gameplay
+
+Classic puzzle game, smooth and responsive controls:
+
+![Tetris Demo](images/tetris.gif)
+
+---
+
+### Meow Jump Gameplay
+
+Jump, dodge, and climb to new heights:
+
+![MeowJump Demo](images/meowjump.gif)
+
+---
+
+### Pause & Reset Feature
+
+Quickly pause or restart at any time:
+
+![Setting Demo](images/setting.gif)
+
+---
+
 ## Features
 
 - **Multiple Games:** Tetris, Meow Jump, TOpoint, and more coming soon!
 - **Unique Visuals:** Custom playful graphics and animations.
-- **Responsive UI:** Optimized for both desktop and mobile browsers.
 - **Local High Score:** Each game saves your best score in your browser.
 - **Continuous Updates:** Regularly adding new features and games.
 - **Open Source:** Code and assets are free for learning and improvement.
@@ -37,12 +59,6 @@ This project is a personal journey of game development, where I continuously des
 - **HTML5, CSS3, JavaScript (ES6+)**
 - Vanilla JS (no frameworks)
 - Responsive design, custom assets
-
----
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ---
 
@@ -65,7 +81,6 @@ Feel free to fork the repository, submit pull requests, or open issues.
 ## Contact
 
 If you want to connect, discuss ideas, or report issues, please reach out via GitHub or email:  
-**your.email@example.com**
+**richard.yang@gmail.com**
 
 ---
-
