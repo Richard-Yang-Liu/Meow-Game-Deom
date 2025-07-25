@@ -6,15 +6,6 @@ This project is a personal journey of game development, where I continuously des
 **If you want to play, [Click here!](https://richard-yang-liu.github.io/Meow-Game-Deom/homepage.html)**
 
 ---
-## Game Preview
-
-![Tetris Gameplay](images/tetris-demo.png)
-*Classic Tetris UI*
-
-![Meow Jump Gameplay](images/meowjump-demo.png)
-*Jumping Cat Adventure*
-
----
 
 ## Features
 
@@ -63,4 +54,3 @@ If you want to connect, discuss ideas, or report issues, please reach out via Gi
 **your.email@example.com**
 
 ---
-
