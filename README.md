@@ -81,6 +81,6 @@ Feel free to fork the repository, submit pull requests, or open issues.
 ## Contact
 
 If you want to connect, discuss ideas, or report issues, please reach out via GitHub or email:  
-**richard.yan@gmail.com**
+**richard.yang@gmail.com**
 
 ---
