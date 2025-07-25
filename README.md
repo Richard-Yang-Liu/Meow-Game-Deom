@@ -4,7 +4,7 @@ Welcome to the **Meow Games Collection** – a growing series of fun and accessi
 
 This project is a personal journey of game development, where I continuously design, build, and refine casual games such as **Tetris**, **Meow Jump**, and more.
 
-** [Play Online Now](https://richard-yang-liu.github.io/Meow-Game-Deom/homepage.html)**
+### [Play Online Now](https://richard-yang-liu.github.io/Meow-Game-Deom/homepage.html)
 
 ---
 
