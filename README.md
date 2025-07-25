@@ -3,6 +3,8 @@
 Welcome to the **Meow Games Collection** – a growing series of fun and accessible web-based mini-games, built for learning, creativity, and sharing!  
 This project is a personal journey of game development, where I continuously design, build, and refine casual games such as **Tetris**, **Meow Jump**, and more.
 
+**If you want to play, [Click here!]([https://your-deployment-link.com](https://richard-yang-liu.github.io/Meow-Game-Deom/homepage.html))**
+
 ---
 
 ## Features
@@ -21,20 +23,6 @@ This project is a personal journey of game development, where I continuously des
 - **HTML5, CSS3, JavaScript (ES6+)**
 - Vanilla JS (no frameworks)
 - Responsive design, custom assets
-
----
-
-## Getting Started
-
-1. **Clone or Download:**
-    ```bash
-    git clone https://github.com/your-username/meow-games-collection.git
-    ```
-2. **Open:**  
-   Open `homepage.html` or `gamepage/gamepage.html` in your browser.
-
-3. **Play:**  
-   Select any game from the menu and enjoy!
 
 ---
 
