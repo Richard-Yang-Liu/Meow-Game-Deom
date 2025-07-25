@@ -9,16 +9,16 @@ This project is a personal journey of game development, where I continuously des
 ## 🎬 Live Demo
 
 **Homepage Preview:**  
-<video src="images/index.gif" width="350" autoplay loop muted playsinline></video>
+![Homepage Demo](images/index.gif)
 
 **Tetris Gameplay:**  
-<video src="images/tetris.gif" width="350" autoplay loop muted playsinline></video>
+![Tetris Demo](images/tetris.gif)
 
 **Meow Jump Gameplay:**  
-<video src="images/meowjump.gif" width="350" autoplay loop muted playsinline></video>
+![MeowJump Demo](images/meowjump.gif)
 
 **Pause & Reset Demo:**  
-<video src="images/setting.gif" width="350" autoplay loop muted playsinline></video>
+![Setting Demo](images/setting.gif)
 
 ---
 ## Features
