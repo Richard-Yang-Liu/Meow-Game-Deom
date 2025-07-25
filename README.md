@@ -48,7 +48,6 @@ Quickly pause or restart at any time:
 
 - **Multiple Games:** Tetris, Meow Jump, TOpoint, and more coming soon!
 - **Unique Visuals:** Custom playful graphics and animations.
-- **Responsive UI:** Optimized for both desktop and mobile browsers.
 - **Local High Score:** Each game saves your best score in your browser.
 - **Continuous Updates:** Regularly adding new features and games.
 - **Open Source:** Code and assets are free for learning and improvement.
