@@ -6,7 +6,21 @@ This project is a personal journey of game development, where I continuously des
 **If you want to play, [Click here!](https://richard-yang-liu.github.io/Meow-Game-Deom/homepage.html)**
 
 ---
+## 🎬 Live Demo
 
+**Homepage Preview:**  
+<video src="images/index.mp4" width="350" autoplay loop muted playsinline></video>
+
+**Tetris Gameplay:**  
+<video src="images/tetris.mp4" width="350" autoplay loop muted playsinline></video>
+
+**Meow Jump Gameplay:**  
+<video src="images/meowjump.mp4" width="350" autoplay loop muted playsinline></video>
+
+**Pause & Reset Demo:**  
+<video src="images/setting.mp4" width="350" autoplay loop muted playsinline></video>
+
+---
 ## Features
 
 - **Multiple Games:** Tetris, Meow Jump, TOpoint, and more coming soon!
@@ -54,3 +68,4 @@ If you want to connect, discuss ideas, or report issues, please reach out via Gi
 **your.email@example.com**
 
 ---
+
