@@ -3,7 +3,7 @@
 Welcome to the **Meow Games Collection** – a growing series of fun and accessible web-based mini-games, built for learning, creativity, and sharing!  
 This project is a personal journey of game development, where I continuously design, build, and refine casual games such as **Tetris**, **Meow Jump**, and more.
 
-**If you want to play, [Click here!]([https://your-deployment-link.com](https://richard-yang-liu.github.io/Meow-Game-Deom/homepage.html))**
+**If you want to play, [Click here!](https://richard-yang-liu.github.io/Meow-Game-Deom/homepage.html)**
 
 ---
 
