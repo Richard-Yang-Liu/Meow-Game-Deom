@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>黑桃21点 创新回合制AI Demo</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #24252a; color: #f3f3f3; }
+        .container { max-width: 420px; margin: 40px auto; background: #32343a; border-radius: 12px; box-shadow: 0 0 16px #0007; padding: 32px; }
+        .hand { margin-bottom: 16px; }
+        .cards { font-size: 1.2em; letter-spacing: 4px; margin-bottom: 5px; }
+        .score { font-weight: bold; }
+        button { margin: 8px 10px 0 0; padding: 8px 20px; border: none; border-radius: 6px; font-size: 1em; background: #4bb9fc; color: #fff; cursor: pointer;}
+        button:disabled { background: #888; cursor: not-allowed;}
+        .result { font-size: 1.1em; margin-top: 18px; color: #ffd700; font-weight:bold;}
+        #ai-action { font-size: 1em; margin-top: 8px; min-height: 18px; display:block; }
+        .aibtns button {background:#2fd7c4;}
+        .ai-mode {margin-left:8px;}
+        /* 弹窗 */
+        #modal-bg {
+            position: fixed; left:0; top:0; width:100vw; height:100vh;
+            background:rgba(20,20,30,0.70); z-index:9; display:none; align-items:center; justify-content:center;
+        }
+        #modal-box {
+            background:#2d3340; color:#fff; border-radius:12px; padding:36px 30px 28px 30px; text-align:center; min-width:260px;
+            box-shadow:0 8px 32px #0009; font-size:1.1em; max-width:96vw;
+        }
+        #modal-box b{color:#ffd700;}
+        #modal-btn {
+            margin-top:22px; padding:7px 28px; background:#49e2b8; color:#222; border:none; border-radius:7px; font-size:1.08em; cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>黑桃A-K创新21点</h2>
+        <div>
+            <b>AI策略：</b>
+            <span class="aibtns">
+                <button id="ai-aggressive">激进</button>
+                <button id="ai-defensive">保守</button>
+                <button id="ai-probability">概率</button>
+            </span>
+            <span class="ai-mode" id="ai-type">概率型AI</span>
+        </div>
+        <div id="ai-action"></div>
+        <div class="hand">
+            <div>你的手牌：<span id="player-cards" class="cards"></span></div>
+            <div>你的点数：<span id="player-points" class="score"></span></div>
+        </div>
+        <div class="hand">
+            <div>AI手牌：<span id="ai-cards" class="cards"></span></div>
+            <div>AI手牌数量：<span id="ai-num" class="score"></span></div>
+        </div>
+        <div>
+            <button id="hit-btn">要牌</button>
+            <button id="stand-btn">停牌</button>
+            <button id="reset-btn">重开</button>
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+    <!-- 弹窗部分 -->
+    <div id="modal-bg">
+        <div id="modal-box">
+            <div id="modal-content"></div>
+            <button id="modal-btn">确定</button>
+        </div>
+    </div>
+    <script>
+        const spadeValues = ['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
+        let deck, playerHand, aiHand, playerStand, aiStand, gameOver, aiStyle = 'probability';
+
+        function newDeck() { return spadeValues.map(v => ({ suit:'♠', value:v })); }
+        function shuffle(arr){ for(let i=arr.length-1;i>0;i--){ let j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]];} return arr; }
+        function cardValue(card) {
+            if(card.value === 'A') return 11;
+            if(['K','Q','J'].includes(card.value)) return 10;
+            return parseInt(card.value);
+        }
+        function calculatePoints(hand) {
+            let points = 0, aceCount = 0;
+            hand.forEach(card=>{
+                if(card.value==='A'){aceCount+=1;points+=11;}
+                else if(['K','Q','J'].includes(card.value)){points+=10;}
+                else{points+=Number(card.value);}
+            });
+            while(points>21&&aceCount>0){points-=10;aceCount--;}
+            return points;
+        }
+        function renderHand(hand) { return hand.map(card=>card.suit+card.value).join(' '); }
+
+        function startGame() {
+            deck = shuffle(newDeck());
+            playerHand = [deck.pop()];
+            aiHand = [deck.pop()];
+            playerStand = false;
+            aiStand = false;
+            gameOver = false;
+            document.getElementById('result').innerText = '';
+            document.getElementById('ai-action').innerText = '每回合你可以要牌或停牌，AI会独立决策。双方都停牌后展示全部牌面并判定胜负。';
+            closeModal();
+            updateUI();
+            setButtons(true);
+        }
+
+        function aiAutoDecision() {
+            if (aiStand || gameOver || deck.length === 0) return;
+            let aiPoints = calculatePoints(aiHand);
+            let decision = false;
+            if (aiStyle === 'aggressive') {
+                decision = aiPoints < 18 || (aiPoints < 20 && Math.random() < 0.25);
+            } else if (aiStyle === 'defensive') {
+                decision = aiPoints < 17 || (aiPoints < 19 && Math.random() < 0.03);
+            } else {
+                let safeCards = deck.filter(card => aiPoints + cardValue(card) <= 21);
+                let safeProb = safeCards.length / deck.length;
+                decision = (safeProb > 0.5 && aiPoints < 21);
+            }
+            if (decision && deck.length > 0) {
+                aiHand.push(deck.pop());
+            } else {
+                aiStand = true;
+            }
+        }
+
+        function playerHit() {
+            if(gameOver || playerStand || deck.length===0) return;
+            playerHand.push(deck.pop());
+            aiAutoDecision();
+            updateUI();
+            checkRoundEnd();
+        }
+
+        function playerStandFunc() {
+            if(gameOver || playerStand) return;
+            playerStand = true;
+            aiAutoDecision();
+            updateUI();
+            checkRoundEnd();
+        }
+
+        function checkRoundEnd() {
+            // 只要任何一方进入停牌状态就检查
+            // 若双方都停牌或者牌用光则游戏结束
+            if(gameOver) return;
+            if((playerStand && aiStand) || deck.length===0) {
+                gameOver = true;
+                setButtons(false);
+                revealAll();
+            } else {
+                // 只要不是双方都停，保证按钮和状态都有效
+                setButtons(!playerStand && !gameOver && deck.length > 0);
+            }
+        }
+
+        function revealAll() {
+            const playerPoints = calculatePoints(playerHand);
+            const aiPoints = calculatePoints(aiHand);
+            let msg = '';
+            msg += `<b>你的手牌：</b>${renderHand(playerHand)}  (${playerPoints})<br>`;
+            msg += `<b>AI手牌：</b>${renderHand(aiHand)}  (${aiPoints})<br><br>`;
+            if(playerPoints === aiPoints) msg += "<b>平局！</b>";
+            else if(Math.abs(21-playerPoints) < Math.abs(21-aiPoints)) msg += "<b>你更接近21，获胜！</b>";
+            else msg += "<b>AI更接近21，AI获胜！</b>";
+            document.getElementById('result').innerText = '';
+            document.getElementById('ai-action').innerText = '游戏结束。点击“重开”开始新的一局。';
+            document.getElementById('ai-cards').innerText = renderHand(aiHand);
+            document.getElementById('ai-num').innerText = aiHand.length;
+            document.getElementById('ai-points').innerText = aiPoints;
+            showModal(msg);
+        }
+
+        function updateUI() {
+            document.getElementById('player-cards').innerText = renderHand(playerHand);
+            document.getElementById('player-points').innerText = calculatePoints(playerHand);
+            let aiStr = aiHand.map((_,i)=>i==0?aiHand[0].suit+aiHand[0].value:'[?]').join(' ');
+            document.getElementById('ai-cards').innerText = aiStr;
+            document.getElementById('ai-num').innerText = aiHand.length;
+            document.getElementById('ai-points').innerText = '?';
+            // “要牌/停牌”只在游戏没结束且玩家未停且还有牌时可点
+            setButtons(!playerStand && !gameOver && deck.length > 0);
+        }
+
+        function setButtons(enable){
+            document.getElementById('hit-btn').disabled = !enable;
+            document.getElementById('stand-btn').disabled = !enable;
+        }
+
+        // 模态弹窗
+        function showModal(html){
+            document.getElementById('modal-content').innerHTML = html;
+            document.getElementById('modal-bg').style.display='flex';
+        }
+        function closeModal(){
+            document.getElementById('modal-bg').style.display='none';
+        }
+        document.getElementById('modal-btn').onclick = function(){
+            closeModal();
+        };
+
+        // AI策略切换
+        document.getElementById('ai-aggressive').onclick = function() {
+            aiStyle = 'aggressive';
+            document.getElementById('ai-type').innerText = '激进型AI';
+        };
+        document.getElementById('ai-defensive').onclick = function() {
+            aiStyle = 'defensive';
+            document.getElementById('ai-type').innerText = '保守型AI';
+        };
+        document.getElementById('ai-probability').onclick = function() {
+            aiStyle = 'probability';
+            document.getElementById('ai-type').innerText = '概率型AI';
+        };
+
+        document.getElementById('hit-btn').onclick = playerHit;
+        document.getElementById('stand-btn').onclick = playerStandFunc;
+        document.getElementById('reset-btn').onclick = startGame;
+
+        startGame();
+    </script>
+</body>
+</html>

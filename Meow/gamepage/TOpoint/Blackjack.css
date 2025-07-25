@@ -1,0 +1,701 @@
+/* === 页面基础结构样式 === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title-global {
+  font-family: 'Inspiration', cursive !important;
+  font-size: 35px ;
+  letter-spacing: 5px;
+  color: #f7e847 !important;
+  text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* === 背景视频和背景元素 === */
+.video-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #0b75c7, #367157);
+}
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  transform: scale(0.9);
+  transform-origin: center center;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.left-curtain,
+.right-curtain {
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+  height: 100vh;
+}
+
+.left-curtain {
+  top: 0;
+  left: -120px;
+  z-index: 10;
+}
+
+.right-curtain {
+  top: 0;
+  right: -120px;
+  z-index: 10;
+}
+
+.bottom-grass {
+  position: fixed;
+  bottom: -180px;
+  left: 0;
+  width: 100vw;
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.up-curtain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 300px;
+  object-fit: cover;
+  z-index: 9;
+  pointer-events: none;
+}
+
+/* === 主体结构布局 === */
+.main-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.game-panel {
+  background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+  border-radius: 20px;
+  transition: all .3s;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+}
+
+.game-panel:hover {
+  box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+}
+
+.game-panel2 {
+  background-color: #1a1a1a;
+  border-radius: 20px;
+  transition: all .2s;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  gap: 20px;
+}
+
+.game-panel2:hover {
+  transform: scale(0.98);
+}
+
+.game-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7; /* 可根据需要调整亮度 */
+  z-index: 0;
+}
+
+.grid-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0); /* 初始完全透明 */
+  transition: background 0.5s ease;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 8px;
+}
+
+
+.hanging-cat-container-global {
+  position: absolute;
+  top: -155px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11;
+  pointer-events: none;
+}
+
+.hanging-cat-global {
+  width: 200px;
+  height: auto;
+}
+
+/* === 标题与侧边导航栏 === */
+.game-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.title {
+  color: #fff;
+  font-size: 2em;
+  margin: 10px 0;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.side-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  padding-left: 10px;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.side-nav a:hover {
+  text-decoration: underline;
+}
+
+/* === 自定义按钮样式（左侧导航栏） === */
+.button {
+  appearance: none;
+  border: none;
+  background: none;
+  color: #0f1923;
+  cursor: pointer;
+  position: relative;
+  padding: 6px;
+  width: 160px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 13px;
+  transition: all .15s ease;
+}
+
+.button::before,
+.button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: calc(50% - 4px);
+  border: 1px solid #7D8082;
+  transition: all .15s ease;
+}
+
+.button::before {
+  top: 0;
+  border-bottom: none;
+}
+
+.button::after {
+  bottom: 0;
+  border-top: none;
+}
+
+.button:active {
+  outline: none;
+}
+
+.button:active::before {
+  top: 3px;
+  left: 3px;
+  right: 3px;
+}
+
+.button:active::after {
+  bottom: 3px;
+  left: 3px;
+  right: 3px;
+}
+
+.button_lg {
+  display: block;
+  position: relative;
+  padding: 8px 15px;
+  color: #fff;
+  background-color: #0f1923;
+  overflow: hidden;
+}
+
+.button_lg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  background-color: #0f1923;
+}
+
+.button_lg::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 4px;
+  height: 4px;
+  background-color: #0f1923;
+  transition: all .2s ease;
+}
+
+.button_sl {
+  position: absolute;
+  top: 0;
+  bottom: -1px;
+  left: -8px;
+  width: 0;
+  background-color: #ff4655;
+  transform: skew(-15deg);
+  transition: all .2s ease;
+}
+
+.button_text {
+  position: relative;
+}
+
+.button:hover {
+  color: #0f1923;
+}
+
+.button:hover .button_sl {
+  width: calc(100% + 15px);
+}
+
+.button:hover .button_lg::after {
+  background-color: #fff;
+}
+
+/* === 俄罗斯方块主体结构 === */
+.game-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.left-info-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+  width: 180px;
+}
+
+.cat-video {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: auto;
+}
+
+#game-grid {
+  position: relative;
+  width: 300px;
+  height: 600px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.779);
+}
+
+/* 确保游戏元素保持 absolute */
+#game-grid .platform,
+#game-grid #cat {
+  position: absolute;
+  z-index: 10;
+}
+
+/* 如果你有背景视频在底层 */
+#game-grid .game-bg-video {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+
+.cell {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid #444;
+}
+
+
+/* === 得分区与下一个方块 === */
+.score-board {
+  background-color: transparent;
+  border-radius: 15px;
+  padding: 20px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  height: 100%;
+  color: #ffffff;
+}
+
+/* === 暂停遮罩 === */
+#pause-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.pause-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#resume-btn.button {
+  width: auto;
+  min-width: 160px;
+  margin-top: 10px;
+}
+
+/* 睡觉容器：垂直排列猫与Z */
+.sleep-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* 🐱 猫咪睡觉图 */
+.cat-sleep {
+  width: 120px;
+  height: auto;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+/* 💨 打呼Z字母从猫头部上升 */
+.z {
+  position: absolute;
+  top: 20px;        /* 猫头上方 */
+  left: 60px;       /* 猫头中间 */
+  font-size: 20px;
+  color: #000000;
+  opacity: 0;
+  font-family: 'Inspiration', cursive;
+  z-index: 2;
+}
+
+.z-1 { animation: swayUpToRight 2s ease-out infinite; }
+.z-2 { animation: swayUpToRight 2s ease-out 0.5s infinite; }
+.z-3 { animation: swayUpToRight 2s ease-out 1s infinite; }
+.z-4 { animation: swayUpToRight 2s ease-out 1.5s infinite; }
+
+@keyframes swayUpToRight {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(60px, -100px) rotate(30deg);
+    opacity: 0;
+  }
+}
+
+/* === 弹窗模态框 === */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-box {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-box h2 {
+  margin: 0 0 10px;
+}
+
+.modal-box p {
+  margin: 10px 0;
+}
+
+.modal-box button {
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  margin: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.modal-box button:hover {
+  opacity: 0.9;
+}
+
+/* === 倒计时文字 === */
+#countdown {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 100px;
+  font-weight: bold;
+  font-family: 'Inspiration', cursive !important;
+  color: #fff200;
+  z-index: 9999; /* 保证在最上层 */
+  text-shadow: 2px 2px 8px #ffffffcc !important;
+  display: none; /* 初始隐藏，JS控制显示 */
+  pointer-events: none;
+}
+
+
+/* ✅ 重置提示框文字样式统一 */
+.reset-title {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* ✅ 统一模态框视频样式（复用现有猫咪视频样式） */
+.pause-box .cat-video {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 10px auto;
+}
+
+/* === 计分卡片样式 === */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.cards .card {
+  font-family: 'Sour Gummy', cursive;
+  color: #fffcfc !important;
+  font-size: 20px;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  min-height: 100px;
+  width: 180px;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  transition: 400ms;
+}
+
+.cards .red { background-color: #b73e5298; }
+.cards .blue { background-color: #335da09a; }
+
+.cards .green {
+  background-color: #22c55e4c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding-bottom: 10px;
+  gap: 20px;
+}
+
+.cards .yellow {
+  background-color: #f8e53abb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding-bottom: 10px;
+  gap: 20px;
+}
+
+.card.green .tip {
+  transform: translateY(15px);
+}
+
+.card.yellow .tip {
+  transform: translateY(15px);
+}
+
+.cards .card p.tip {
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.cards .card:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.cards:hover > .card:not(:hover) {
+  filter: blur(10px);
+  transform: scale(0.9, 0.9);
+}
+
+/* 游戏结束卡片 */
+.gameover-box {
+  font-family: 'Inspiration', cursive !important;
+  letter-spacing: 15px;
+  color: #f7e847 !important;
+  text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.6) !important;
+  width: 400px;
+  aspect-ratio: 16 / 9; /* 固定比例 */
+  background: #0c0b0bf5;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  place-content: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.gameover-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid #bd9f67;
+  opacity: 0;
+  transform: rotate(10deg);
+  transition: all 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.gameover-box:hover::before {
+  inset: 15px;
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* 卡片内容整体居中 */
+.content {
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* 分数显示区域 */
+.score-compact {
+  font-family: 'Poppins', sans-serif;
+  color: #bd9f67;
+  font-size: 32px;
+  font-weight: 600;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* 初始隐藏得分值 */
+.score-value {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* 悬停后显示分数 */
+.gameover-box:hover .score-value {
+  opacity: 1;
+}
+
+/* 按钮样式统一 */
+#restart-btn.button {
+  width: auto;
+  min-width: 180px;
+}
+
+.platform {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  border-radius: 6px;
+  z-index: 5;
+  background-size: cover;    /* 新增，确保图片填充完整 */
+  background-repeat: no-repeat; /* 新增，防止平铺 */
+  background-position: center center; /* 新增，图片居中 */
+}
+

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meow Jump</title>
+    <link rel="stylesheet" href="meowjump.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inspiration&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="video-wrapper">
+        <video autoplay muted loop id="bg-video">
+        <source src="images/background.mp4" type="video/mp4" />
+        </video>
+    </div>
+
+    <img src="images/leftbackgrand.png" class="left-curtain" alt="left curtain" />
+    <img src="images/rightbackgrand.png" class="right-curtain" alt="right curtain" />
+    <img src="images/grass.png" class="bottom-grass" alt="grass" />
+    <img src="images/upside.png" class="up-curtain" alt="upside" />
+
+    <div class="main-container">
+        <div class="game-panel">
+            <div class="game-panel2">
+                <div class="hanging-cat-container-global">
+                    <img src="images/hangingcat.png" class="hanging-cat-global" alt="Hanging Cat" />
+                </div>
+                <div class="game-body">
+
+                <!-- Left Panel -->
+                <div class="left-info-panel">
+                    <h1 class="title title-global"> Meow Jump</h1>
+                    <nav class="side-nav">
+                    <button class="button" onclick="location.href='/homepage.html'">
+                        <span class="button_lg">
+                            <span class="button_sl"></span>
+                            <span class="button_text">Return Home</span>
+                        </span>
+                    </button>
+                    <button class="button" onclick="location.href='/gamepage/gamepage.html'">
+                        <span class="button_lg">
+                            <span class="button_sl"></span>
+                            <span class="button_text">Game Menu</span>
+                        </span>
+                    </button>
+                    <button class="button" id="pause-btn">
+                        <span class="button_lg">
+                            <span class="button_sl"></span>
+                            <span class="button_text">Pause</span>
+                        </span>
+                    </button>
+                    <button class="button" id="reset-btn">
+                        <span class="button_lg">
+                            <span class="button_sl"></span>
+                            <span class="button_text">Reset</span>
+                        </span>
+                    </button>
+                    <button class="button" onclick="location.href='/feedback.html'">
+                        <span class="button_lg">
+                            <span class="button_sl"></span>
+                            <span class="button_text">Feedback</span>
+                        </span>
+                    </button>
+                    <button class="button" onclick="location.href='/profile.html'">
+                        <span class="button_lg">
+                            <span class="button_sl"></span>
+                            <span class="button_text">Profile</span>
+                        </span>
+                    </button>
+                    </nav>
+                    <video src="images/leftcat.mp4" autoplay muted loop class="cat-video"></video>
+                </div>
+
+                <!-- Main Game Ground -->
+                <div id="game-grid">
+                    <video autoplay muted loop class="game-bg-video">
+                        <source src="images/back.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="grid-mask" id="gridMask"></div>
+                </div>
+
+                <!-- Right Panel -->
+                <div class="score-board">
+                    <div class="cards">
+                        <div class="card red">
+                            <p class="tip">High Score</p>
+                            <p class="second-text" id="high-score">470</p>
+                        </div>
+                        <div class="card blue">
+                            <p class="tip">Your Score</p>
+                            <p class="second-text" id="score">0</p>
+                        </div>
+                        <div class="card green">
+                            <p class="tip">Your Level</p>
+                            <p class="second-text" id="level">0</p>
+                        </div>
+                        <div class="card yellow">
+                            <p class="tip">Your Star</p>
+                            <span class="second-text" id="star">0</span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <!-- Pause Game -->
+            <div id="pause-overlay">
+                <div class="pause-box">
+                    <div class="sleep-container">
+                        <img src="images/sleep.png" alt="Sleeping Cat" class="cat-sleep" />
+                        <div class="z z-1">Z</div>
+                        <div class="z z-2">Z</div>
+                        <div class="z z-3">Z</div>
+                        <div class="z z-4">Z</div>
+                    </div>
+                    <button id="resume-btn" class="button">
+                        <span class="button_lg">
+                            <span class="button_sl"></span>
+                            <span class="button_text">Resume</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over -->
+    <div id="game-over-modal" class="modal-overlay">
+        <div class="gameover-box">
+            <div class="content">
+                <div class="score-compact" id="hover-score">
+                    <span class="score-label">SCORE</span>
+                    <span class="score-value" id="final-score">0</span>
+                </div>
+                <button id="restart-btn" class="button">
+                    <span class="button_lg">
+                    <span class="button_sl"></span>
+                    <span class="button_text">Play Again</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reset -->
+    <div id="reset-modal" class="modal-overlay">
+        <div class="pause-box">
+            <div class="sleep-container">
+                <video src="images/reset.mp4" autoplay muted loop class="cat-video"></video>
+            </div>
+            <p class="reset-title">Restart the game?</p>
+            <button id="confirm-reset-btn" class="button">
+                <span class="button_lg">
+                    <span class="button_sl"></span>
+                    <span class="button_text">Yes</span>
+                </span>
+            </button>
+            <button id="cancel-reset-btn" class="button">
+                <span class="button_lg">
+                    <span class="button_sl"></span>
+                    <span class="button_text">Cancel</span>
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Countdown -->
+    <div id="countdown"></div>
+
+    <audio id="bgm" src="images/music.wav" loop></audio>
+    <script src="meowjump.js"></script>
+</body>
+</html>

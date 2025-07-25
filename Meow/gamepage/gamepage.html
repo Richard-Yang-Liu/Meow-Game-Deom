@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Center</title>
+  <link rel="stylesheet" href="gamepage.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inspiration&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="video-wrapper">
+        <video autoplay muted loop id="bg-video">
+        <source src="images/background.mp4" type="video/mp4" />
+        </video>
+    </div>
+    <img src="images/leftbackgrand.png" class="left-curtain" alt="left curtain" />
+    <img src="images/rightbackgrand.png" class="right-curtain" alt="right curtain" />
+    <img src="images/grass.png" class="bottom-grass" alt="grass" />
+    <img src="images/upside.png" class="up-curtain" alt="upside" />
+
+    <div class="main-container">
+        <div class="game-center-panel">
+            <div class="game-center-inner">
+              <div class="footer-waves">
+                <img src="images/line.png" alt="glow line" />
+              </div>
+                <!-- START -->
+              <div class="photo-menu-container">
+                  <div class="menu-header">
+                      <span class="menu-title">Game Menu</span>
+                  </div>
+                  <div class="photo-stack-list"></div>
+                  <!-- Game View (JS) -->
+                  <div id="pagination-bar" class="pagination-bar">
+
+                  </div>
+              </div>
+
+                <!-- Hanging Cat -->
+              <div class="hanging-cat-container-global">
+                  <img src="images/hangingcat.png" class="hanging-cat-global" alt="Hanging Cat" />
+              </div>
+              <div class="game-center-body">
+                  <div id="game-center-area"></div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+  <script src="gamepage.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meow Rhythm</title>
+  <link rel="stylesheet" href="homepage.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inspiration&display=swap" rel="stylesheet">
+</head>
+<body>
+  <audio id="bg-music" autoplay loop>
+    <source src="music/bgm.mp3" type="audio/mpeg" />
+  </audio>
+  <div class="video-wrapper">
+    <video autoplay muted loop id="bg-video">
+      <source src="images/background.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <!-- Background -->
+  <img src="images/leftbackgrand.png" class="left-curtain" alt="left curtain" />
+  <img src="images/rightbackgrand.png" class="right-curtain" alt="right curtain" />
+  <img src="images/grass.png" class="bottom-grass" alt="grass" />
+  <img src="images/upside.png" class="up-curtain" alt="upside" />
+  <h1 class="title-global">Meow</h1>
+  <div class="container"  id="menu-panel" style="display: flex;">
+    <div class="left-panel"  style="margin: auto;">
+      <img src="images/hangingcat.png" class="hanging-cat" alt="hanging cat" />
+      <div class="button-wrapper">
+
+        <!-- Button Start Game -->
+        <a href="gamepage/gamepage.html">
+          <div class="button-icon" title="Start the game">
+            <div class="cube">
+              <span class="side front">Game</span>
+              <span class="side top">🎮</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Button Achievement -->
+        <a href="javascript:void(0);" class="not-available">
+          <div class="button-icon" title="View your achievements">
+            <div class="cube">
+              <span class="side front">Achievements</span>
+              <span class="side top">🏆</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Button Introduction -->
+        <a href="javascript:void(0);" class="not-available">
+          <div class="button-icon" title="Learn about the game">
+            <div class="cube">
+            <span class="side front">Introduction</span>
+              <span class="side top">🌐</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Button Setting -->
+        <a href="javascript:void(0);" class="not-available">
+          <div class="button-icon" title="Customize your preferences">
+            <div class="cube">
+              <span class="side front">Settings</span>
+              <span class="side top">⚙️</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-section">
+      <img src="images/Singing.gif" alt="cat" class="cat-img">
+    </div>
+  </div>
+
+  <div id="popup-mask" style="display:none;"></div>
+  <div id="popup-dialog" style="display:none;">
+    <div class="popup-content">
+      <span class="popup-message">This feature will be available soon, stay tuned!<br></span>
+      <button class="popup-close-btn" onclick="closePopup()">Close</button>
+    </div>
+  </div>
+</body>
+</html>
+
+<!-- Not available (Achievement Setting Introduction) -->
+<script>
+  document.querySelectorAll('.not-available').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      showPopup();
+    });
+  });
+
+  function showPopup() {
+    document.getElementById('popup-mask').style.display = 'block';
+    document.getElementById('popup-dialog').style.display = 'flex';
+  }
+
+  function closePopup() {
+    document.getElementById('popup-mask').style.display = 'none';
+    document.getElementById('popup-dialog').style.display = 'none';
+  }
+  
+</script>

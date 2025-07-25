@@ -1,0 +1,364 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-wrapper {
+  background: url("images/back.png") no-repeat center center;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  transform: scale(0.9);
+  transform-origin: center center;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.left-curtain,
+.right-curtain {
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.left-curtain {
+  top: 0;
+  left: -120px;
+  height: 100vh;
+  z-index: 10;
+}
+
+.right-curtain {
+  top: 0;
+  right: -120px;
+  height: 100vh;
+  z-index: 10;
+}
+
+.bottom-grass {
+  position: fixed;
+  bottom: -180px;
+  left: 0;
+  width: 100vw;
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.up-curtain{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 300px;
+  object-fit: cover;
+  z-index: 9;
+  pointer-events: none;
+}
+
+.title-global {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 150px;
+  font-family: 'Inspiration', cursive;
+  letter-spacing: 30px;
+  color: #ffb6d5;
+  text-shadow: 2px 2px 8px rgba(6, 6, 6, 0.6);
+  z-index: 10;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.left-panel {
+  flex: 0 0 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.hanging-cat {
+  width: 140px;
+  position: absolute;
+  top: calc(50% - 260px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.button-wrapper {
+  width: 250px;
+  height: 350px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ffe1c1, #d5f2ff);
+  box-shadow: 15px 15px 30px rgb(178, 231, 243), -15px -15px 30px rgb(60, 60, 60);
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 10px;
+  margin-top: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+.button-icon {
+  display: flex;
+  border: none;
+  cursor: pointer;
+  perspective: 800px;
+  width: fit-content;
+  height: fit-content;
+  margin: 0 auto;
+}
+
+.cube {
+  transition: all 0.4s;
+  transform-style: preserve-3d;
+  width: 200px;
+  height: 20px;
+  position: relative;
+}
+
+.button-icon:hover {
+  border-color: #ff98a2;
+}
+
+.button-icon:hover .cube {
+  transform: rotateX(90deg);
+  box-shadow: 0 0 15px #ffd6e9;
+}
+
+.side {
+  position: absolute;
+  height: 47px;
+  width: 200px;
+  display: flex;
+  font-size: 15px;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: normal;
+  transition: background 0.3s ease;
+}
+
+.front {
+  background: linear-gradient(135deg, #71b0cb, #431f81);
+  color: #fff;
+  transform: translate3d(0, 0, 1em);
+}
+
+.top {
+  background: linear-gradient(45deg, #ffa0c2, #a3d8ff);
+  color: #fff;
+  transform: rotateX(-90deg) translate3d(0, 13.5px, 2em);
+}
+
+.button-icon:hover .front {
+  background: #ff90b3;
+  color: #222;
+}
+
+.right-section {
+  position: absolute;
+  right: 550px;
+  bottom: 180px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.cat-img {
+  width: 180px;
+}
+
+.v1 {
+  font-family: 'Inspiration', cursive;
+  font-size: 128px;
+  color: #ff98a2;
+  letter-spacing: 1px;
+}
+
+.auth-choice {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.auth-choice button {
+  width: 220px;
+  background: linear-gradient(135deg, #ffe1c1, #d5f2ff);
+  font-family: 'Poppins', sans-serif;
+  padding: 0.6em 2em;
+  font-weight: 900;
+  font-size: 18px;
+  border: 3px solid black;
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.auth-choice button:hover {
+  transform: scale(1.05);
+}
+
+button:hover {
+  transform: translate(-0.05em, -0.05em);
+  box-shadow: 0.15em 0.15em;
+}
+
+button:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.05em 0.05em;
+}
+
+.login-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background: linear-gradient(135deg, #ffe9d1, #d5f2ff);
+  box-shadow: 15px 15px 30px rgb(178, 231, 243), -15px -15px 30px rgb(60, 60, 60);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+  display: none;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+.login-form h2 {
+  font-family: 'Inspiration', cursive;
+  color: #ff81e0;
+  margin-bottom: 10px;
+}
+
+.login-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.login-form button {
+  background: #7562a1;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.login-form button:hover {
+  background: #ff6f9e;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 45px;
+}
+
+/* not available */
+#popup-mask {
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(30, 30, 30, 0.22);
+  backdrop-filter: blur(2px);
+  transition: all 0.2s;
+}
+
+#popup-dialog {
+  position: fixed;
+  z-index: 1010;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  display: flex;
+  justify-content: center; align-items: center;
+}
+
+.popup-content {
+  min-width: 240px;
+  background: linear-gradient(120deg, #fffbe6 60%, #ffe66a 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 38px 0 #f7e84738;
+  padding: 32px 36px 18px 36px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #1a1a1a;
+  position: relative;
+}
+
+.popup-message {
+  font-size: 1.2em;
+  letter-spacing: 1.5px;
+}
+
+.popup-close-btn {
+  margin-top: 22px;
+  padding: 8px 26px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(90deg, #ffe66a 60%, #b3e2ff 100%);
+  color: #1f387e;
+  font-weight: 600;
+  font-size: 1.15em;
+  box-shadow: 0 4px 18px #ffe66a30;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.popup-close-btn:hover {
+  background: linear-gradient(90deg, #24c6dc 60%, #ffe66a 100%);
+  color: #232323;
+}
