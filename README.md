@@ -18,7 +18,7 @@ See the main menu and navigation:
 
 ![Homepage Demo](images/index.gif)
 
---
+---
 
 ### Tetris Gameplay
 
