@@ -7,7 +7,7 @@ const games = [
   },
   {
     name: "Meow Jump",
-    desc: "Meow Jump Platform",
+    desc: "Jump Platform",
     image: "images/Jump.png",
     url: "Meow Jump/meowjump.html"
   },
