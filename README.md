@@ -24,7 +24,7 @@ See the main menu and navigation:
 
 Classic puzzle game, smooth and responsive controls:
 
-![Tetris Demo](images/tetris.gif)
+![Tetris Demo](images/Blocks.gif)
 
 ---
 
@@ -46,7 +46,7 @@ Quickly pause or restart at any time:
 
 ## Features
 
-- **Multiple Games:** Tetris, Meow Jump, TOpoint, and more coming soon!
+- **Multiple Games:** Meow Blocks, Meow Jump, TOpoint, and more coming soon!
 - **Unique Visuals:** Custom playful graphics and animations.
 - **Local High Score:** Each game saves your best score in your browser.
 - **Continuous Updates:** Regularly adding new features and games.
