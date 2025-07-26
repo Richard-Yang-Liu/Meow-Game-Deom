@@ -1,9 +1,9 @@
 const games = [
   {
-    name: "Tetris",
-    desc: "Classic Tetris",
-    image: "images/Tetris.png",
-    url: "Tetris/Tetris.html"
+    name: "Meow Block",
+    desc: "Classic Block puzzle",
+    image: "images/Meow Block.png",
+    url: "Meow Block/MeowBlock.html"
   },
   {
     name: "Meow Jump",
