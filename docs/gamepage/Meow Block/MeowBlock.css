@@ -17,7 +17,7 @@ body {
 .title-global {
   font-family: 'Inspiration', cursive !important;
   font-size: 35px !important;
-  letter-spacing: 20px;
+  letter-spacing: 5px;
   color: #f7e847 !important;
   text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.8) !important;
 }
@@ -101,7 +101,7 @@ body {
   z-index: 2;
 }
 
-.tetris-panel {
+.Block-panel {
   background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
   border-radius: 20px;
   transition: all .3s;
@@ -112,11 +112,11 @@ body {
   width: fit-content;
 }
 
-.tetris-panel:hover {
+.Block-panel:hover {
   box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
 }
 
-.tetris-panel2 {
+.Block-panel2 {
   background-color: #1a1a1a;
   border-radius: 20px;
   transition: all .2s;
@@ -128,7 +128,7 @@ body {
   gap: 20px;
 }
 
-.tetris-panel2:hover {
+.Block-panel2:hover {
   transform: scale(0.98);
 }
 
@@ -147,7 +147,7 @@ body {
 }
 
 /* === Left Panel === */
-.tetris-header {
+.Block-header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -291,7 +291,7 @@ body {
 }
 
 /* === Main Game ground === */
-.tetris-body {
+.Block-body {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -316,7 +316,7 @@ body {
   margin-top: auto;
 }
 
-#tetris-grid {
+#Block-grid {
   display: grid;
   grid-template-columns: repeat(10, 30px);
   grid-template-rows: repeat(20, 30px);

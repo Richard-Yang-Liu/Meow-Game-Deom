@@ -1,5 +1,5 @@
 // DOM
-const grid = document.getElementById('tetris-grid');
+const grid = document.getElementById('Block-grid');
 const scoreDisplay = document.getElementById('score');
 const finalScoreDisplay = document.getElementById('final-score');
 const pauseBtn = document.getElementById('pause-btn');
@@ -26,7 +26,7 @@ let gamePaused = false;
 let gameOver = false;
 let gameStarted = false;
 let pausedForReset = false;
-let highScore = parseInt(localStorage.getItem("tetris-high-score")) || 0;
+let highScore = parseInt(localStorage.getItem("Block-high-score")) || 0;
 highScoreDisplay.textContent = highScore;
 
 // Block Shapes
