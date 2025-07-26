@@ -20,7 +20,7 @@ See the main menu and navigation:
 
 ---
 
-### Tetris Gameplay
+### Meow Blocks Gameplay
 
 Classic puzzle game, smooth and responsive controls:
 
