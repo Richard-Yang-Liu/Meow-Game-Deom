@@ -40,7 +40,7 @@ Jump, dodge, and climb to new heights:
 
 Quickly pause or restart at any time:
 
-![Setting Demo](images/setting.gif)
+![Setting Demo](images/pause.gif)
 
 ---
 
