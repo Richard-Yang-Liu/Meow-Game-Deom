@@ -24,7 +24,7 @@ See the main menu and navigation:
 
 Classic puzzle game, smooth and responsive controls:
 
-![Tetris Demo](images/Blocks.gif)
+![Tetris Demo](images/MeowBlocks.gif)
 
 ---
 
