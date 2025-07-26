@@ -16,7 +16,7 @@ Experience the games instantly through these animated previews:
 
 See the main menu and navigation:
 
-![Homepage Demo](images/index.gif)
+![Homepage Demo](images/homepage.gif)
 
 ---
 
