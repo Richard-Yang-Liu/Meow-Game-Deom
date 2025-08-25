@@ -23,7 +23,6 @@ function updateUI() {
   document.getElementById('score').textContent = score;
   document.getElementById('level').textContent = level;
   document.getElementById('star').textContent = star;
-  // -------【同步历史高分显示】-------
   let best = Number(localStorage.getItem('bestScore') || 0);
   document.getElementById('high-score').textContent = best;
 }
@@ -41,25 +40,24 @@ let lastPlatformType = 'rock';
 let nextCloudLevel = 100 + Math.floor(Math.random() * 7) + 7;
 function getRandomPlatformType(level, lastType) {
   let isSpecialAllowed = (level - lastSpecialPlatformLevel >= 10);
-  let type = 'rock'; // 默认rock
+  let type = 'rock';
   let rnd = Math.random();
 
-  // 不同关卡分段，调整平台概率
-  if (level > 300) { // 顶级阶段
-    if (rnd < 0.50) type = 'cloud';             // 50%云朵
-    else if (rnd < 0.75) type = 'ice';          // 25%冰块
-    else if (rnd < 0.95) type = 'rock';         // 20%石台
-    else type = 'runningstage';                 // 5%移动台
+  if (level > 300) { 
+    if (rnd < 0.50) type = 'cloud';
+    else if (rnd < 0.75) type = 'ice';
+    else if (rnd < 0.95) type = 'rock';
+    else type = 'runningstage';
   } else if (level > 200) {
-    if (rnd < 0.32) type = 'cloud';             // 32%云朵
-    else if (rnd < 0.55) type = 'ice';          // 23%冰块
-    else if (rnd < 0.90) type = 'rock';         // 35%石台
-    else type = 'runningstage';                 // 10%移动台
+    if (rnd < 0.32) type = 'cloud';
+    else if (rnd < 0.55) type = 'ice';
+    else if (rnd < 0.90) type = 'rock';
+    else type = 'runningstage';
   } else if (level > 120) {
-    if (rnd < 0.20) type = 'cloud';             // 20%云朵
-    else if (rnd < 0.39) type = 'ice';          // 19%冰块
-    else if (rnd < 0.84) type = 'rock';         // 45%石台
-    else type = 'runningstage';                 // 16%移动台
+    if (rnd < 0.20) type = 'cloud';
+    else if (rnd < 0.39) type = 'ice';
+    else if (rnd < 0.84) type = 'rock';
+    else type = 'runningstage';
   } else if (level > 100) {
     if (rnd < 0.16) type = 'cloud';
     else if (rnd < 0.32) type = 'ice';
@@ -79,7 +77,6 @@ function getRandomPlatformType(level, lastType) {
     else type = 'rock';
   }
 
-  // 避免连续重复特殊平台
   if (isSpecialAllowed && type !== 'rock' && type !== lastType) {
     lastSpecialPlatformLevel = level;
   } else if (!isSpecialAllowed) {
@@ -311,7 +308,6 @@ class Platform {
     }
   }
   setCloudFrame(idx) {
-  // idx=0:常态；idx=1:被踩压
     if (this.type === 'cloud') {
       this.frame = idx;
       this.el.style.backgroundPosition = `${-PLATFORM_WIDTH * idx}px 0`;
@@ -369,9 +365,9 @@ function maybeAddStar(level) {
 
 // Create Platform
 const SAFE_LEVEL = 150;
-const MAX_PLATFORM_X_DIFF = 75; // 可以适当调整
-let specialPlatformGap = 0; // 距上一个特殊平台已生成普通平台数量
-let specialsInLastBatch = 0; // 当前批次已插入特殊平台数
+const MAX_PLATFORM_X_DIFF = 75;
+let specialPlatformGap = 0;
+let specialsInLastBatch = 0;
 
 function generatePlatformsToTop(targetY) {
   let topY = Math.min(...platforms.map(p => p.y));
@@ -384,7 +380,6 @@ function generatePlatformsToTop(targetY) {
     const gap = getPlatformGap();
     let px;
 
-    // 只控制云朵后的平台横向安全距离
     if (
       level >= SAFE_LEVEL &&
       lastType === 'cloud' &&
@@ -397,7 +392,6 @@ function generatePlatformsToTop(targetY) {
       px = Math.random() * (gridWidth - PLATFORM_WIDTH);
     }
 
-    // ---- 特殊平台插入机制（不变） ----
     let forceSpecial = false;
     let specialNeedNum = 0, batchLen = 0;
     if (level <= 120) {
@@ -443,7 +437,6 @@ function gameLoop(now) {
   lastTime = now;
   if (!gameStarted || gamePaused || gameOver) return;
 
-  // --- scrollSpeed 只此一处赋值 ---
   scrollSpeed = scrollSpeedBase + Math.floor(level / 30) * 0.1;
 
   cat.update(delta);
@@ -472,13 +465,11 @@ function gameLoop(now) {
     gameOverModal.style.display = 'flex';
     document.getElementById('final-score').textContent = score;
 
-    // -------【高分存储和刷新】-------
     let best = Number(localStorage.getItem('bestScore') || 0);
     if (score > best) {
       localStorage.setItem('bestScore', score);
-      best = score; // 更新本地变量
+      best = score;
     }
-    // 主动更新高分显示
     document.getElementById('high-score').textContent = best;
 
     return;
